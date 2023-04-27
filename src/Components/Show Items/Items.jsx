@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { ItemContext } from "../../Store/ItemContext";
 const Items = () => {
-  const { items } = useContext(ItemContext);
+  const { items, deleteItem } = useContext(ItemContext);
+
+  const handleDeleteClick = (itemId) => {
+    deleteItem(itemId);
+  };
 
   return (
     <>
@@ -11,7 +15,9 @@ const Items = () => {
             <td>{item.name}</td>
             <td>₹{item.price}</td>
             <td>{item.category}</td>
-            <td>{item.category}</td>
+            <td>
+              <button onClick={() => handleDeleteClick(item.id)}>Delete</button>
+            </td>
           </tr>
         );
       })}

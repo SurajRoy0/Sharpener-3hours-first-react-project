@@ -32,8 +32,12 @@ export const ItemProvider = (props) => {
     });
   };
 
+  const deleteItem = (id) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
   return (
-    <ItemContext.Provider value={{ items, addItem }}>
+    <ItemContext.Provider value={{ items, addItem, deleteItem }}>
       {props.children}
     </ItemContext.Provider>
   );
